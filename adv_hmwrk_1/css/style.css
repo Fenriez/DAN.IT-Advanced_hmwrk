@@ -16,6 +16,7 @@ html, body {
 
 /* HEADER */
 .header {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,7 +35,14 @@ html, body {
 }
 
 .main_menu, .logo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 57%;
     display: none;
+}
+.main_menu__item {
+    height: 30px;
 }
 
 .burger_btn {
@@ -67,6 +75,165 @@ html, body {
     color: #a6d6e0;
     font-size: 1.4rem;
     font-weight: 700;  
+}
+
+/* MENU SECTIONS */
+.menu_sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 0;
+}
+
+.menu_section {
+    display: flex;
+    justify-items: center;
+    margin: 1px 0;
+    height: 75px;
+    width: 100%;
+    color: #ffffff;
+    background-size: cover;
+}
+
+.menu_section__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 250px;
+    width: calc(100% - 70px);
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;    
+}
+.pizza_menu .menu_section__title {
+    background: url(../images/mobile/bg-pizza_section.png) no-repeat;
+    background-position: 50% 95%;
+    background-size: cover;
+}
+.salads_menu .menu_section__title {
+    background: url(../images/mobile/bg-salads_section.png) no-repeat;
+    background-position: 50% 95%;
+    background-size: cover;
+}
+.desserts_menu .menu_section__title {
+    background: url(../images/mobile/bg-desserts_section.png) no-repeat;
+    background-position: 50% 15%;
+    background-size: cover;
+}
+
+.menu_section__go_to {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 70px;
+    background: #ACD9AD;
+}
+
+/* MENU CONTENT */
+.menu_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 18px;
+    font-family: 'Lato', sans-serif;
+}
+.menu_content__title {
+    margin-bottom: 10px;
+}
+.menu_content__title h2 {
+    font-size: 2rem;
+    color: #3f4043;
+    text-transform: uppercase;
+}
+.menu_content__title p {
+    font-size: 1rem;
+    color: #cbcdce;
+}
+.menu_content__section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.menu_content__section_title {
+    padding-left: 20px;
+    height: 37px;    
+    background: #ACD9AD;
+    color:  #ffffff;
+    font-size: 2rem;
+    line-height: 37px;
+    text-transform: uppercase;
+}
+
+.menu__item_group {
+    /* margin-top: 15px; */
+    padding: 0 20px;
+}
+.item_group__title {
+    position: relative;
+    padding: 15px 0 7px 0;
+    font-size: 1.5rem;
+    color: #3f4043;
+    text-transform: uppercase;
+}
+.item_group__title::after {
+    position: absolute;
+    top: 61%;
+    right: 0;
+    transform: translateY(-50%);
+}
+.ice::after {
+    content: url(../images/mobile/icons/icon-snowflake.png);
+    height: 25px;
+}
+.wine::after {
+    content: url(../images/mobile/icons/icon-wineglass.png);
+    height: 24px;
+}
+.tea::after {
+    content: url(../images/mobile/icons/icon-cup.png);
+    height: 21px;
+}
+.beer::after {
+    content: url(../images/mobile/icons/icon-beerglass.png);
+    height: 20px;
+}
+
+.menu__item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    color:  #3f4043;
+}
+.item_name,
+.item_price {
+    font-size: 1.4rem;
+}
+.item_name {
+    position: relative;
+    padding-left: 5px;
+}
+.item_name::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    height: 2px;
+    width: 2px;
+    background: #3f4043;
+}
+.item_description {
+    margin-top: 5px;
+    width: 100%;
+    text-align: justify;
+    font-size: 0.87rem;
 }
 
 /* FOOTER */
