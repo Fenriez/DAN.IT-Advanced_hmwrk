@@ -1,0 +1,88 @@
+/* TAGS */
+html {   
+    font-size: 10px;
+}
+html, body {
+    height: 100%;
+}
+
+/* CLASSES */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    min-width: 320px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 37px;
+    width: 100%;
+    background: #373C3F;
+}
+
+.block_name {
+    margin-left: 18px;
+    font-family: 'Montserrat', sans-serif;
+    color:  #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;    
+}
+
+.main_menu, .logo {
+    display: none;
+}
+
+.burger_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 41px;
+    background: #202529;
+    color: white;
+}
+
+/* HOME */
+.home {
+    padding: 13px 20px;
+    height: 173px;
+    width: 100%;
+    background: #ffffff url("../images/mobile/bg-home.png") no-repeat center;
+    background-size: cover;
+    line-height: 23px;
+}
+.slogan {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+.address {
+    font-family: 'Lato', sans-serif;
+    color: #a6d6e0;
+    font-size: 1.4rem;
+    font-weight: 700;  
+}
+
+/* FOOTER */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 100%;
+    background: #acd9ad;
+}
+
+.footer__info {
+    font-family: 'Montserrat', sans-serif;
+    color:  #ffffff;
+    font-size: 1.2rem;
+    line-height: 16px;
+}

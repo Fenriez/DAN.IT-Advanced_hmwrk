@@ -1,0 +1,39 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, 
+blockquote, a, address, code, img, ol, ul, li,
+fieldset, form, label, legend, table, caption, 
+tbody, tfoot, thead, tr, th, td, article, aside, 
+canvas, details, embed, figure, figcaption, footer, 
+header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+    box-sizing: border-box;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+ 
+ul, ol {
+    list-style: none;
+}
+
+a, a:hover, a:active {
+    text-decoration: none;
+}
+
+input, a {
+    outline: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+button {
+    border: none;
+}

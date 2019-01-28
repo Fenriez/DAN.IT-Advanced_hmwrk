@@ -1,0 +1,8 @@
+#PSD files
+*.psd
+
+#ZIP files
+*.zip
+
+#Thumbs files
+Thumbs.db
