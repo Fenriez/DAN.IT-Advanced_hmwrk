@@ -6,3 +6,11 @@
 
 #Thumbs files
 Thumbs.db
+
+#node.js
+node_modules
+package.json
+package-lock.json
+
+#Gulp
+gulpfile.js
