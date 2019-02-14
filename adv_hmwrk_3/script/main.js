@@ -1,19 +1,5 @@
 class Hamburger {
-    constructor(size, stuffing) {
-        try {
-            if (!size || !stuffing) {
-                throw new HamburgerException("One of two arguments is missing");
-            } else if (size.type != "size" || !size.type) {
-                throw new HamburgerException(`Invalid size: ${size.name}`);
-            } else if (stuffing.type != "stuffing" || !stuffing.type) {
-                throw new HamburgerException(`Invalid stuffing: ${stuffing.name}`);
-            };
-        } catch (err) {
-            if (err instanceof HamburgerException) {
-                console.log(err.message);
-            };
-            return "Error";
-        };
+    constructor(size, stuffing) {        
         this.size = size;
         this.stuffing = stuffing;
         this.topping = [];
@@ -55,7 +41,7 @@ class Hamburger {
 
     set topping(value) {
         try {
-            if (typeof (value) != "Object" || value.type != "topping" || !value.type) {
+            if (typeof(value) != "Object" || value.type != "topping" || !value.type) {
                 throw new HamburgerException(`Invalid topping value`);
             } else {
                 if (!this.topping.includes(value)) {
@@ -72,6 +58,20 @@ class Hamburger {
     };
 
     get topping() {
+        try {
+            if (this._topping.length > 0) {
+                return this._topping;
+            } else {
+                throw new HamburgerException("There are no toppings in your hamburger");
+            }
+        } catch (err) {
+            if (err instanceof HamburgerException) {
+                console.log(err.message);
+            };
+        };
+    };
+
+    get stuffing() {
         try {
             if (this._topping.length > 0) {
                 return this._topping;
@@ -107,21 +107,9 @@ class Hamburger {
         return this.topping;
     };
 
-    getSize() {
-        try {
-            if (!this.size) {
-                throw new HamburgerException("Size argument is missing");
-            } else if (this.size.type != "size" || !this.size.type) {
-                throw new HamburgerException(`Invalid size: ${this.size.name}`);
-            };
-        } catch (err) {
-            if (err instanceof HamburgerException) {
-                console.log(err.message);
-            };
-            return "Error";
-        };
+    getSize() {        
         return this.size;
-    }
+    };
 
     getStuffing() {
         let stuffing = this.stuffing.name;
