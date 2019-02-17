@@ -1,8 +1,8 @@
 class Hamburger {
-    constructor(size, stuffing) {        
+    constructor(size, stuffing) {
         this.size = size;
         this.stuffing = stuffing;
-        this.topping = [];
+        this.topping;
     };
 
     set size(value) {
@@ -11,6 +11,8 @@ class Hamburger {
                 throw new HamburgerException("Size argument is missing");
             } else if (value.type != "size" || !value.type) {
                 throw new HamburgerException(`Invalid size: ${value.name}`);
+            } else {
+                this._size = value;
             };
         } catch (err) {
             if (err instanceof HamburgerException) {
@@ -18,8 +20,6 @@ class Hamburger {
             };
             return "Error";
         };
-        this._size = value;
-        return;
     };
 
     set stuffing(value) {
@@ -28,6 +28,8 @@ class Hamburger {
                 throw new HamburgerException("Stuffing argument is missing");
             } else if (value.type != "stuffing" || !value.type) {
                 throw new HamburgerException(`Invalid stuffing: ${value.name}`);
+            } else {
+                this._stuffing = value;
             };
         } catch (err) {
             if (err instanceof HamburgerException) {
@@ -35,25 +37,29 @@ class Hamburger {
             };
             return "Error";
         };
-        this._stuffing = value;
-        return;
     };
 
     set topping(value) {
         try {
-            if (typeof(value) != "Object" || value.type != "topping" || !value.type) {
+            if (value.type != "topping" || !value.type) {
                 throw new HamburgerException(`Invalid topping value`);
             } else {
-                if (!this.topping.includes(value)) {
+                if (!this._topping) {
+                    this._topping = [];
                     this._topping.push(value);
                 } else {
-                    throw new HamburgerException(`Topping ${value.name} has been already added`);
-                };
+                    if (!this._topping.includes(value)) {
+                        this._topping.push(value);
+                    } else {
+                        throw new HamburgerException(`Topping ${value.name} has been already added`);
+                    };
+                }
             };
         } catch (err) {
             if (err instanceof HamburgerException) {
                 console.log(err.message);
             };
+            return "Error";
         };
     };
 
@@ -68,21 +74,16 @@ class Hamburger {
             if (err instanceof HamburgerException) {
                 console.log(err.message);
             };
+            return "Error";
         };
     };
 
     get stuffing() {
-        try {
-            if (this._topping.length > 0) {
-                return this._topping;
-            } else {
-                throw new HamburgerException("There are no toppings in your hamburger");
-            }
-        } catch (err) {
-            if (err instanceof HamburgerException) {
-                console.log(err.message);
-            };
-        };
+        return this._stuffing;
+    };
+
+    get size() {
+        return this._size;
     };
 
     addTopping(topping) {
@@ -100,6 +101,7 @@ class Hamburger {
             if (err instanceof HamburgerException) {
                 console.log(err.message);
             };
+            return;
         };
     };
 
@@ -107,13 +109,13 @@ class Hamburger {
         return this.topping;
     };
 
-    getSize() {        
+    getSize() {
         return this.size;
     };
 
     getStuffing() {
         let stuffing = this.stuffing.name;
-        for (elem of this.topping) {
+        for (let elem of this.topping) {
             stuffing = stuffing + ", " + elem.name;
         };
         return stuffing;
@@ -121,7 +123,7 @@ class Hamburger {
 
     calculatePrice() {
         let price = this.size.price + this.stuffing.price;
-        for (elem of this.topping) {
+        for (let elem of this.topping) {
             price += elem.price;
         };
         return price;
@@ -130,7 +132,7 @@ class Hamburger {
     calculateCalories() {
         let calories = this.size.calories + this.stuffing.calories;
         if (calories != undefined) {
-            for (elem of this.topping) {
+            for (let elem of this.topping) {
                 calories += elem.calories;
             };
             return calories;
@@ -146,7 +148,7 @@ Hamburger.SIZE_SMALL = {
 };
 Hamburger.SIZE_LARGE = {
     type: "size",
-    name: "small",
+    name: "large",
     price: 100,
     calories: 40,
 };
@@ -169,13 +171,13 @@ Hamburger.STUFFING_POTATO = {
     calories: 10,
 };
 Hamburger.TOPPING_MAYO = {
-    type: "stuffing",
+    type: "topping",
     name: "mayo",
     price: 20,
     calories: 5,
 };
 Hamburger.TOPPING_SPICE = {
-    type: "stuffing",
+    type: "topping",
     name: "spice",
     price: 15,
     calories: 0,
